@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Felirat -->
+        <TextView
+            android:id="@+id/registrationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/registration"
+            android:textSize="@dimen/default_font_size"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="center"/>
+
+        <!-- Felhasználónév -->
+        <EditText
+            android:id="@+id/userNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/registrationTextView"
+            android:textAlignment="center"/>
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/userEmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+
+            android:hint="@string/emailaddress"
+            android:inputType="textEmailAddress"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/userNameEditText"
+            android:textAlignment="center"/>
+
+        <!-- Telefonszám -->
+        <EditText
+            android:id="@+id/phoneNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+
+            android:hint="@string/phonenumber"
+            android:inputType="phone"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/userEmailEditText"
+            android:textAlignment="center"/>
+
+        <!-- Telefonszám - Spinner -->
+        <Spinner
+            android:id="@+id/phoneNumberSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/phoneNumberEditText"
+            android:textAlignment="viewStart" />
+
+        <!-- Cím -->
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+            android:maxLines="3"
+
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+
+            android:hint="@string/address"
+            android:inputType="textPostalAddress|textMultiLine"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/phoneNumberSpinner"
+            android:textAlignment="center"/>
+
+        <!-- Felhasználó kategóriája -->
+        <RadioGroup
+            android:id="@+id/accountTypeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+            android:layout_below="@id/addressEditText"
+            android:textAlignment="center">
+
+            <RadioButton
+                android:id="@+id/buyerRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buyer" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/seller" />
+
+        </RadioGroup>
+
+
+        <!-- Jelszó -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/accountTypeGroup"
+            android:textAlignment="center"/>
+
+        <!-- Jelszó újra -->
+        <EditText
+            android:id="@+id/passwordAgainEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:ems="10"
+
+            android:layout_marginLeft="@dimen/default_side_margin"
+            android:layout_marginRight="@dimen/default_side_margin"
+
+
+            android:hint="@string/passwordagain"
+            android:inputType="textPassword"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/passwordEditText"
+            android:textAlignment="center"/>
+
+        <!-- Gombokat tároló layout -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/passwordAgainEditText"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_centerHorizontal="true">
+
+            <!-- Gombok -->
+            <!-- Regisztráció -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registration"
+                android:onClick="register"/>
+
+            <!-- Mégse -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="@string/cancel"
+                android:onClick="cancel" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

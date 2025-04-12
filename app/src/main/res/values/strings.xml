@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">TicketExpress</string>
+    <string name="username">Felhasználónév</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="registration">Regisztráció</string>
+    <string name="emailaddress">E-mail cím</string>
+    <string name="passwordagain">Jelszó megerősítése</string>
+    <string name="cancel">Mégse</string>
+    <string name="phonenumber">Telefonszám</string>
+    <string name="address">Postai cím</string>
+    <string name="buyer">Vásárló</string>
+    <string name="seller">Eladó</string>
+    <string-array name="phonemodes">
+        <item>Otthoni</item>
+        <item>Munkahelyi</item>
+        <item>Mobil</item>
+        <item>Egyéb</item>
+    </string-array>
+</resources>
