@@ -11,6 +11,7 @@
     <string name="address">Postai cím</string>
     <string name="buyer">Vásárló</string>
     <string name="seller">Eladó</string>
+    <string name="guestlogin">Bejelentkezés vendégként</string>
     <string-array name="phonemodes">
         <item>Otthoni</item>
         <item>Munkahelyi</item>

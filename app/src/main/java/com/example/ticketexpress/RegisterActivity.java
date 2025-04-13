@@ -1,5 +1,6 @@
 package com.example.ticketexpress;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,26 +14,30 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String LOG_TAG = RegisterActivity.class.getName();
     private static final String PREFERENCE_KEY = RegisterActivity.class.getPackage().toString();
     private static final int SECRET_KEY = 1215;
 
-
     EditText userNameET;
     EditText userEmailET;
     EditText phoneNumberET;
     Spinner phoneNumberSP;
     EditText addressET;
-
     RadioGroup accountTypeGroup;
-
     EditText passwordET;
     EditText passwordAgainET;
 
 
     private SharedPreferences preferences;
+    private FirebaseAuth FBAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,10 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         phoneNumberSP.setAdapter(adapter);
 
+
+        //Firebase inicializáció
+        FBAuth = FirebaseAuth.getInstance();
+
         Log.i(LOG_TAG,"onCreate");
     }
 
@@ -100,8 +109,20 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         //Adatok lekérése
         Log.i(LOG_TAG,"Regisztrált: " + userName + ", E-mail: " + email + ", Telefonszám: " + phoneNumber);
         //Log.i(LOG_TAG,address);
-        //TODO A regisztrációt még meg kell valósítani backend-ben...
-        startShopping();
+
+        //TODO FIREBASE
+        FBAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Log.d(LOG_TAG,"A felhasználó sikeresen létrejött!");
+                    startShopping();
+                } else {
+                    Log.d(LOG_TAG,"A felhasználó elutasítva!");
+                    Toast.makeText(RegisterActivity.this,"A felhasználó elutasítva!" + task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void cancel(View view) {
@@ -110,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     private void startShopping(/*Regisztrált adatok*/){
         Intent intent = new Intent(this,ShopListActivity.class);
-        intent.putExtra("SECRET_KEY",SECRET_KEY);
+        //intent.putExtra("SECRET_KEY",SECRET_KEY);
         startActivity(intent);
     }
 

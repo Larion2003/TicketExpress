@@ -1,5 +1,6 @@
 package com.example.ticketexpress;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     //Classname lekérése
@@ -21,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     EditText passwordET;
 
     private SharedPreferences preferences;
+    private FirebaseAuth FBAuth;
 
 
     @Override
@@ -33,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         passwordET = findViewById(R.id.editTextPassword);
 
         preferences = getSharedPreferences(PREFERENCE_KEY,MODE_PRIVATE);
-
+        FBAuth = FirebaseAuth.getInstance();
 
         Log.i(LOG_TAG,"onCreate");
     }
@@ -43,7 +51,42 @@ public class MainActivity extends AppCompatActivity {
         String password = passwordET.getText().toString();
 
         //Teszt
-        Log.i(LOG_TAG,"Bejelentkezett: " + userName + ", jelszó: " + password);
+        //Log.i(LOG_TAG,"Bejelentkezett: " + userName + ", jelszó: " + password);
+
+        FBAuth.signInWithEmailAndPassword(userName,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Log.d(LOG_TAG,"A felhasználó sikeresen belépett!");
+                    startShopping();
+                }  else {
+                    Log.d(LOG_TAG,"A felhasználó belépése elutasítva!");
+                    Toast.makeText(MainActivity.this,"A felhasználó belépése elutasítva!" + task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void startShopping(){
+        Intent intent = new Intent(this,ShopListActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void loginAsGuest(View view) {
+        //TODO login
+        FBAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Log.d(LOG_TAG,"Az anoním felhasználó sikeresen belépett!");
+                    startShopping();
+                }  else {
+                    Log.d(LOG_TAG,"Az anoním felhasználó belépése elutasítva!");
+                    Toast.makeText(MainActivity.this,"A felhasználó belépése elutasítva!" + task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void register(View view) {
@@ -51,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("SECRET_KEY",SECRET_KEY);
         startActivity(intent);
     }
+
+
 
     ///////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////
@@ -98,4 +143,5 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i(LOG_TAG,"onResume");
     }
+
 }
