@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984221718981",
+    "project_id": "ticketexpress-f59a8",
+    "storage_bucket": "ticketexpress-f59a8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984221718981:android:462712db96ca7d56c413ac",
+        "android_client_info": {
+          "package_name": "com.example.ticketexpress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDboYSgLVYtdzXBjgN43mtZi7AT2AWdQ68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
