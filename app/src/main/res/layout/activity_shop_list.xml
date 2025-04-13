@@ -8,33 +8,33 @@
 
     <ImageView
         android:id="@+id/elso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/picture1"
+        app:srcCompat="@drawable/trainlogo"
         />
 
     <ImageView
         android:id="@+id/masodik"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="@dimen/default_margin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/elso"
-        app:srcCompat="@drawable/picture2" />
+        app:srcCompat="@drawable/trainlogo" />
 
     <ImageView
         android:id="@+id/harmadik"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/masodik"
-        app:srcCompat="@drawable/picture3"
+        app:srcCompat="@drawable/trainlogo"
         />
 
 
