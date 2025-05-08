@@ -227,6 +227,7 @@ public class ShopListActivity extends AppCompatActivity{
                 Log.d(LOG_TAG,s);
                 mAdapter.getFilter().filter(s);
                 return false;
+
             }
         });
 
