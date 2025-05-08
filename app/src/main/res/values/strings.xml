@@ -1,0 +1,111 @@
+<resources>
+    <string name="app_name">TicketExpress</string>
+    <string name="username">Felhasználónév</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="registration">Regisztráció</string>
+    <string name="emailaddress">E-mail cím</string>
+    <string name="passwordagain">Jelszó megerősítése</string>
+    <string name="cancel">Mégse</string>
+    <string name="phonenumber">Telefonszám</string>
+    <string name="address">Postai cím</string>
+    <string name="buyer">Vásárló</string>
+    <string name="seller">Eladó</string>
+    <string name="guestlogin">Bejelentkezés vendégként</string>
+    <string name="username_emailname">Felhasználónév (E-mail cím)</string>
+
+    <!-- RecycleView -->
+    <string name="title_placeholder">Név</string>
+    <string name="item_placeholder">Leírás</string>
+    <string name="item_info_placeholder">Infó a termékről</string>
+    <string name="tocart">Kosárba</string>
+    <string name="delete">Törlés</string>
+
+
+
+
+
+    <string name="themesettings">Téma beállítása ☀/🌙</string>
+    <string name="theme_settings_light">Téma beállítása ☀</string>
+    <string name="theme_settings_dark">Téma beállítása 🌙</string>
+
+
+
+
+
+
+    <string name="themedescription">A \'Téma váltás\' gombot megnyomva változtatható az alkalmazás kinézete: Nappali és éjszakai stílusok közül lehet választani.</string>
+    <string name="changetheme">Téma váltás</string>
+
+    <string-array name="shopping_item_names">
+        <item>Gyermek jegy</item>
+        <item>Diák jegy</item>
+        <item>Felnőtt jegy</item>
+        <item>Nyugdíjas jegy</item>
+        <item>Chio csipsz</item>
+        <item>Lays csipsz</item>
+        <item>Hamburger</item>
+        <item>Coca kóla</item>
+        <item>Pepsi kóla</item>
+        <item>Ásványvíz</item>
+    </string-array>
+
+    <string-array name="shopping_item_description">
+        <item>8 évnél fiatalabbak számára.</item>
+        <item>25 évnél fiatalabbak számára.</item>
+        <item>65 évnél fiatalabbak számára.</item>
+        <item>65 évnél idősebbek számára.</item>
+        <item>60 g-os paprikás Chio csipsz</item>
+        <item>80 g-os hagymás Lays csipsz</item>
+        <item>Ketchup-majonéz-mustáros-zöldséges hamburger dupla húspogácsával.</item>
+        <item>0.5 literes Coca-cola</item>
+        <item>0.5 literes Pepsi-cola</item>
+        <item>0.5 literes Szentkirályi ásványvíz</item>
+    </string-array>
+
+    <array name="shopping_item_rates">
+        <item>3.5</item>
+        <item>4</item>
+        <item>2.5</item>
+        <item>3.5</item>
+        <item>5</item>
+        <item>4.5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>4.5</item>
+        <item>2</item>
+    </array>
+
+    <array name="shopping_item_images">
+        <item>@drawable/childticket</item>
+        <item>@drawable/studentticket</item>
+        <item>@drawable/adultticket</item>
+        <item>@drawable/retiredticket</item>
+        <item>@drawable/chio</item>
+        <item>@drawable/lays</item>
+        <item>@drawable/hamburger</item>
+        <item>@drawable/cocacola</item>
+        <item>@drawable/pepsicola</item>
+        <item>@drawable/szentkiralyi</item>
+    </array>
+
+    <string-array name="shopping_item_price">
+        <item>100 Ft</item>
+        <item>1500 Ft</item>
+        <item>2000 Ft</item>
+        <item>500 Ft</item>
+        <item>750 Ft</item>
+        <item>750 Ft</item>
+        <item>2500 Ft</item>
+        <item>500 Ft</item>
+        <item>500 Ft</item>
+        <item>500 Ft</item>
+    </string-array>
+
+    <string-array name="phonemodes">
+        <item>Otthoni</item>
+        <item>Munkahelyi</item>
+        <item>Mobil</item>
+        <item>Egyéb</item>
+    </string-array>
+</resources>
