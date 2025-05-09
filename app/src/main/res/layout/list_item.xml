@@ -46,12 +46,8 @@
             android:layout_below="@id/ratingBar"
             android:layout_marginTop="8dp"
             android:padding="8dp"
-            android:text="@string/item_info_placeholder" />
-
-
-
-
-
+            android:text="@string/item_info_placeholder"
+            android:textColor="?android:textColorSecondary"/>
 
 
         <TextView
@@ -62,9 +58,6 @@
             android:visibility="gone"
             android:textStyle="bold"
             android:layout_marginTop="4dp"/>
-
-
-
 
 
         <TextView

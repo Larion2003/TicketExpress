@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThemeSettingsActivity"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Cím -->
+        <TextView
+            android:id="@+id/settingsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/themesettings"
+            android:textAlignment="center"
+            android:textSize="@dimen/default_font_size" />
+
+        <!-- Leírás -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/themedescription"
+            android:textSize="16sp"
+            android:justificationMode="inter_word"
+            android:lineSpacingExtra="4dp"
+            tools:targetApi="o" />
+
+        <!-- Gombok -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <!-- Téma váltás -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="changeTheme"
+                android:text="@string/changetheme"
+                tools:ignore="OnClick,UsingOnClickInXml" />
+
+            <!-- Mégse -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:onClick="cancel"
+                android:text="@string/cancel"
+                tools:ignore="OnClick,UsingOnClickInXml" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
