@@ -21,24 +21,17 @@
     <string name="tocart">Kosárba</string>
     <string name="delete">Törlés</string>
 
-
-
-
-
     <string name="themesettings">Téma beállítása ☀/🌙</string>
     <string name="theme_settings_light">Téma beállítása ☀</string>
     <string name="theme_settings_dark">Téma beállítása 🌙</string>
-
-
-
-
-
 
     <string name="themedescription">A \'Téma váltás\' gombot megnyomva változtatható az alkalmazás kinézete: Nappali és éjszakai stílusok közül lehet választani.</string>
     <string name="changetheme">Téma váltás</string>
     <string name="returnBtn">Vissza</string>
     <string name="buyBtn">Vásárlás</string>
     <string name="total_priceTx">Összesen: 0 Ft</string>
+    <string name="amount">Mennyiség: 1 db</string>
+    <string name="priceTx">Ár</string>
 
     <string-array name="shopping_item_names">
         <item>Gyermek jegy</item>

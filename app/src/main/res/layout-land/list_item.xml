@@ -59,7 +59,7 @@ android:layout_height="wrap_content">
     android:id="@+id/quantityText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Mennyiség: 1 db"
+    android:text="@string/amount"
     android:visibility="gone"
     android:textStyle="bold"
     android:layout_marginTop="2dp"
@@ -75,7 +75,7 @@ android:layout_height="wrap_content">
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="8dp"
     android:padding="4dp"
-    android:text="Ár"
+    android:text="@string/priceTx"
     android:textColor="@color/blue_0080FF"
     android:textSize="10sp" />
 

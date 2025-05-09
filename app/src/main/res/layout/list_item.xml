@@ -80,7 +80,6 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
-            <!-- Add to Cart Button -->
             <Button
                 android:id="@+id/add_to_cart"
                 android:layout_width="0dp"
@@ -90,9 +89,8 @@
                 android:textSize="10sp"
                 android:layout_weight="1"
                 android:minWidth="120dp"
-                android:gravity="center" /> <!-- Center text on the button -->
+                android:gravity="center" />
 
-            <!-- Delete Button -->
             <Button
                 android:id="@+id/delete"
                 android:layout_width="0dp"
@@ -102,7 +100,7 @@
                 android:textSize="10sp"
                 android:layout_weight="1"
                 android:minWidth="120dp"
-                android:gravity="center" /> <!-- Center text on the button -->
+                android:gravity="center" />
 
         </LinearLayout>
 
