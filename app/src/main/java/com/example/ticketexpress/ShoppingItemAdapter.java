@@ -13,6 +13,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,10 +29,17 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
     private Context mContext;
     private int lastPosition = -1;
 
-    ShoppingItemAdapter(Context context, ArrayList<ShoppingItem> itemsData){
+    private boolean isCartView = false;
+
+    public ShoppingItemAdapter(Context context, ArrayList<ShoppingItem> itemsData, boolean isCartView) {
         this.mShoppingItemData = itemsData;
         this.mShoppingItemDataAll = itemsData;
         this.mContext = context;
+        this.isCartView = isCartView;
+    }
+
+    public ShoppingItemAdapter(Context context, ArrayList<ShoppingItem> itemsData) {
+        this(context, itemsData, false);
     }
 
     @Override
@@ -106,6 +114,7 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
         private TextView mPriceText;
         private ImageView mItemImage;
         private RatingBar mRatingBar;
+        private TextView quantityText;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -115,6 +124,8 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
             mPriceText = itemView.findViewById(R.id.price);
             mItemImage = itemView.findViewById(R.id.itemImage);
             mRatingBar = itemView.findViewById(R.id.ratingBar);
+
+            quantityText = itemView.findViewById(R.id.quantityText);
         }
 
         public void bindTo(ShoppingItem currentItem) {
@@ -125,8 +136,27 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
 
             Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
 
-            itemView.findViewById(R.id.add_to_cart).setOnClickListener(view -> ((ShopListActivity)mContext).updateAlertIcon(currentItem));
-            itemView.findViewById(R.id.delete).setOnClickListener(view -> ((ShopListActivity)mContext).deleteItem(currentItem));
+            View addToCartBtn = itemView.findViewById(R.id.add_to_cart);
+            View deleteBtn = itemView.findViewById(R.id.delete);
+
+            if (isCartView) {
+                addToCartBtn.setVisibility(View.GONE);
+                deleteBtn.setVisibility(View.GONE);
+                quantityText.setVisibility(View.VISIBLE);
+                quantityText.setText("Mennyiség: " + currentItem.getCartedCount() + " db");
+            } else {
+                addToCartBtn.setVisibility(View.VISIBLE);
+                deleteBtn.setVisibility(View.VISIBLE);
+                quantityText.setVisibility(View.GONE);
+
+                addToCartBtn.setOnClickListener(view -> {
+                    CartManager.getInstance().addItem(currentItem);
+                    ((ShopListActivity) mContext).updateAlertIcon(currentItem);
+                    Toast.makeText(mContext, currentItem.getName() + " hozzáadva a kosárhoz", Toast.LENGTH_SHORT).show();
+                });
+
+                deleteBtn.setOnClickListener(view -> ((ShopListActivity) mContext).deleteItem(currentItem));
+            }
         }
     };
 }

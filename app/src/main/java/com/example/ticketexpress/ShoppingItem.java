@@ -45,4 +45,6 @@ public class ShoppingItem {
     public String _getId() { return id; }
 
     public void setId(String id) { this.id = id; }
+
+    public void setCartedCount(int count) { this.cartedCount = count; }
 }

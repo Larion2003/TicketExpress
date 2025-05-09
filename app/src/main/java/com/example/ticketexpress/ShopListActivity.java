@@ -66,7 +66,6 @@ public class ShopListActivity extends AppCompatActivity{
     private AlarmManager mAlarmManager;
     private JobScheduler mJobScheduler;
 
-
     private SharedPreferences preferences;
 
     private BroadcastReceiver themeChangeReceiver = new BroadcastReceiver() {
@@ -126,6 +125,13 @@ public class ShopListActivity extends AppCompatActivity{
         //TODO TESZTEK - ALARM_MANAGER, JOB_SCHEDULER
         setAlarmManager();
         setJobScheduler();
+
+        // Kosár kiürítésének ellenőrzése az Intent-ből
+        Intent intent = getIntent();
+        if (intent != null && intent.getBooleanExtra("clear_cart", false)) {
+            updateAlertIcon(null); // Kosár kiürítése
+        }
+
 
         registerReceiver(themeChangeReceiver, new IntentFilter("com.example.ticketexpress.THEME_CHANGED"));
 
@@ -248,7 +254,9 @@ public class ShopListActivity extends AppCompatActivity{
                 startActivity(settingsIntent);
                 return true;
             case R.id.cart:
-                Log.d(LOG_TAG,"Kosár...");
+                Log.d(LOG_TAG,"Kosárba...");
+                Intent intent = new Intent(this, CartActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.view_selector:
                 Log.d(LOG_TAG,"Nézet...");
@@ -273,18 +281,13 @@ public class ShopListActivity extends AppCompatActivity{
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu){
+    public boolean onPrepareOptionsMenu(Menu menu) {
         final MenuItem alertMenuItem = menu.findItem(R.id.cart);
         FrameLayout rootView = (FrameLayout) alertMenuItem.getActionView();
         redCircle = rootView.findViewById(R.id.view_alert_red_circle);
         countTextView = rootView.findViewById(R.id.view_alert_count_textview);
 
-        rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onOptionsItemSelected(alertMenuItem);
-            }
-        });
+        rootView.setOnClickListener(v -> onOptionsItemSelected(alertMenuItem));
 
         if (shouldUpdateCart && countTextView != null && redCircle != null) {
             if (cartItems > 0) {
@@ -301,26 +304,22 @@ public class ShopListActivity extends AppCompatActivity{
     }
 
     public void updateAlertIcon(ShoppingItem item) {
-        cartItems = (cartItems +1);
-        if (0 < cartItems){
-            countTextView.setText(String.valueOf(cartItems));
-        } else {
+        if (item == null) {
+            // Kosár ürítése esetén nullázom
+            cartItems = 0;
             countTextView.setText("");
+            redCircle.setVisibility(View.GONE);
+        } else {
+            // Kosárba történő hozzáadás
+            cartItems = (cartItems + 1);
+            if (cartItems > 0) {
+                countTextView.setText(String.valueOf(cartItems));
+            } else {
+                countTextView.setText("");
+            }
+            redCircle.setVisibility((cartItems > 0) ? View.VISIBLE : View.GONE);
+
         }
-
-        redCircle.setVisibility((cartItems > 0) ? View.VISIBLE : View.GONE);
-
-        mItems.document(item._getId()).update("cartedCount", item.getCartedCount() + 1 )
-                .addOnFailureListener(failure -> {
-                    Toast.makeText(this, "Az Item" + item._getId() + " nem lett megváltoztatva!",Toast.LENGTH_LONG).show();
-                });
-
-        //Értesítés küldése a user felé
-        mNotificationHandler.send(item.getName());
-
-        //TODO TESZT
-        queryData();
-
     }
 
     @Override

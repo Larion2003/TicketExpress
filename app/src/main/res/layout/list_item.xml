@@ -48,6 +48,25 @@
             android:padding="8dp"
             android:text="@string/item_info_placeholder" />
 
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/quantityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mennyiség: 1 db"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"/>
+
+
+
+
+
         <TextView
             android:id="@+id/price"
             style="@style/ItemDetailText"

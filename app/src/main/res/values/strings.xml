@@ -36,6 +36,9 @@
 
     <string name="themedescription">A \'Téma váltás\' gombot megnyomva változtatható az alkalmazás kinézete: Nappali és éjszakai stílusok közül lehet választani.</string>
     <string name="changetheme">Téma váltás</string>
+    <string name="returnBtn">Vissza</string>
+    <string name="buyBtn">Vásárlás</string>
+    <string name="total_priceTx">Összesen: 0 Ft</string>
 
     <string-array name="shopping_item_names">
         <item>Gyermek jegy</item>

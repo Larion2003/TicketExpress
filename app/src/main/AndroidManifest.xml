@@ -38,6 +38,8 @@
 
         <activity android:name=".ThemeSettingsActivity" />
 
+        <activity android:name=".CartActivity" />
+
     </application>
 
 </manifest>
